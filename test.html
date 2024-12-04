@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Giỏ Hàng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .cart-container {
+      width: 50%;
+      margin: 0 auto;
+    }
+    .cart-header {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .cart-items {
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    .cart-item-name {
+      font-weight: bold;
+    }
+    .status-container {
+      margin-top: 20px;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="cart-container">
+    <div class="cart-header">Giỏ Hàng Của Bạn</div>
+    
+    <!-- Giỏ hàng sản phẩm -->
+    <div class="cart-items">
+      <div class="cart-item">
+        <span class="cart-item-name">Áo Thun - Màu Xanh</span>
+        <span class="cart-item-price">200,000 VNĐ</span>
+      </div>
+      <div class="cart-item">
+        <span class="cart-item-name">Quần Jean - Size 32</span>
+        <span class="cart-item-price">400,000 VNĐ</span>
+      </div>
+    </div>
+    
+    <!-- Trạng thái giỏ hàng -->
+    <div class="status-container">
+      <label for="status">Chọn trạng thái giỏ hàng: </label>
+      <select id="status">
+        <option value="open">Mở</option>
+        <option value="closed">Hoàn tất</option>
+        <option value="abandoned">Bỏ qua</option>
+      </select>
+      <button onclick="updateStatus()">Cập nhật trạng thái</button>
+    </div>
+    
+    <!-- Thông báo trạng thái -->
+    <div id="status-message" style="margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    function updateStatus() {
+      var status = document.getElementById("status").value;
+      var message = '';
+
+      // Cập nhật thông báo dựa trên trạng thái giỏ hàng
+      if (status === 'open') {
+        message = "Giỏ hàng của bạn hiện đang mở.";
+      } else if (status === 'closed') {
+        message = "Giỏ hàng của bạn đã hoàn tất.";
+      } else if (status === 'abandoned') {
+        message = "Giỏ hàng của bạn đã bị bỏ qua.";
+      }
+
+      // Hiển thị thông báo trạng thái
+      document.getElementById("status-message").innerText = message;
+    }
+  </script>
+</body>
+</html>
